@@ -23,6 +23,16 @@ $prices = readPrices();
 </head>
 <body class="admin-page">
   <main class="widget" aria-live="polite">
+    <header class="brand-bar">
+      <p class="brand-name" aria-label="LTC Tankstelle">
+        <span class="brand-line brand-line--ltc">
+          <span style="--i:0">L</span><span style="--i:1">T</span><span style="--i:2">C</span>
+        </span>
+        <span class="brand-line brand-line--sub">
+          <span style="--i:3">T</span><span style="--i:4">a</span><span style="--i:5">n</span><span style="--i:6">k</span><span style="--i:7">s</span><span style="--i:8">t</span><span style="--i:9">e</span><span style="--i:10">l</span><span style="--i:11">l</span><span style="--i:12">e</span>
+        </span> 
+      </p>
+    </header>
     <article class="card" data-key="e5">
       <p class="type">Super E5</p>
       <span class="rule" aria-hidden="true"></span>

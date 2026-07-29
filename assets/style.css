@@ -3,10 +3,10 @@
   --card: #ffffff;
   --accent: #e10600;
   --text: #111111;
-  --gap: 12px;
-  --radius: 24px;
-  --pad-x: 26px;
-  --pad-y: 18px;
+  --gap: 10px;
+  --radius: 18px;
+  --pad-x: 20px;
+  --pad-y: 12px;
 }
 
 * {
@@ -44,22 +44,69 @@ body.admin-page {
 .widget {
   width: 416px;
   height: 624px;
-  padding: 14px 18px 10px;
+  padding: 12px 18px 10px;
   display: flex;
   flex-direction: column;
   gap: var(--gap);
 }
 
+.brand-bar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 96px;
+  padding: 8px 0 4px;
+  overflow: hidden;
+}
+
+.brand-name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: #ffffff;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.brand-line {
+  display: flex;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.brand-line span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(-14px);
+  animation: letterReveal 6.5s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.09s);
+}
+
+.brand-line--ltc span {
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: 0.06em;
+}
+
+.brand-line--sub span {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.22em;
+}
+
 .card {
-  flex: 1 1 0;
-  min-height: 0;
+  flex: 0 0 auto;
   background: var(--card);
   border-radius: var(--radius);
   padding: var(--pad-y) var(--pad-x);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.14);
   animation: rise 0.55s ease both;
 }
 
@@ -69,6 +116,10 @@ body.admin-page {
 
 .card:nth-child(3) {
   animation-delay: 0.16s;
+}
+
+.card:nth-child(4) {
+  animation-delay: 0.24s;
 }
 
 .type {
@@ -83,21 +134,22 @@ body.admin-page {
   display: block;
   width: 26px;
   height: 2px;
-  margin: 12px 0 10px;
+  margin: 8px 0 6px;
   background: #111;
 }
 
 .price {
   display: flex;
-  align-items: flex-start;
-  gap: 4px;
+  align-items: baseline;
+  gap: 2px;
   font-weight: 800;
   line-height: 1;
+  width: fit-content;
 }
 
 .value-input {
-  width: 100%;
-  max-width: 220px;
+  width: 5.2ch;
+  max-width: none;
   border: none;
   outline: none;
   background: transparent;
@@ -116,9 +168,10 @@ body.admin-page {
 
 .price .currency {
   font-size: 28px;
-  margin-top: 8px;
   font-weight: 700;
   flex-shrink: 0;
+  line-height: 1;
+  transform: translateY(-2px);
 }
 
 .footer-bar {
@@ -284,5 +337,23 @@ body.admin-page {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes letterReveal {
+  0%,
+  4% {
+    opacity: 0;
+    transform: translateX(-14px);
+  }
+  12%,
+  82% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  92%,
+  100% {
+    opacity: 0;
+    transform: translateX(8px);
   }
 }
