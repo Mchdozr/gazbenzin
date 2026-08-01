@@ -79,28 +79,21 @@ body.admin-page {
 }
 
 .brand-name {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
+  display: block;
+  width: auto;
+  max-width: 100%;
+  margin: 0 auto;
   color: #ffffff;
+  text-align: center;
   text-transform: uppercase;
-  font-size: 38px;
+  font-size: 34px;
   font-weight: 800;
   line-height: 1;
+  letter-spacing: 0.06em;
   white-space: nowrap;
-  -webkit-text-stroke: 1px #ffffff;
+  -webkit-text-stroke: 0.8px #ffffff;
   paint-order: stroke fill;
-  text-shadow: 0 0 1px #ffffff, 0 1px 0 #ffffff;
-}
-
-.brand-name > span {
-  flex: 0 0 auto;
-}
-
-.brand-name .brand-space {
-  flex: 0 0 0.55em;
-  width: 0.55em;
+  text-shadow: 0 0 1px #ffffff;
 }
 
 .card {

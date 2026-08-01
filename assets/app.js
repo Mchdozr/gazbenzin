@@ -170,11 +170,12 @@
   }
 
   const fitTypeLabels = () => {
-    const maxPx = 34;
     document.querySelectorAll(".card .type").forEach((el) => {
+      const key = el.closest(".card")?.dataset.key;
+      const maxPx = key === "superPlus" ? 24 : 34;
       el.style.fontSize = `${maxPx}px`;
       let size = maxPx;
-      while (el.scrollWidth > el.clientWidth && size > 16) {
+      while (el.scrollWidth > el.clientWidth && size > 14) {
         size -= 1;
         el.style.fontSize = `${size}px`;
       }

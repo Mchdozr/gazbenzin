@@ -25,7 +25,7 @@ sendNoCacheHeaders();
 <body class="display-page" data-live-prices="1">
   <main class="widget" aria-live="polite">
     <header class="brand-bar">
-      <p class="brand-name" aria-label="LTC Tankstelle"><?= brandLettersHtml() ?></p>
+      <p class="brand-name" aria-label="LTC Tankstelle">LTC TANKSTELLE</p>
     </header>
     <?php foreach ($fuels as $fuel):
       $parts = formatPriceParts((float) $prices[$fuel['key']]);
