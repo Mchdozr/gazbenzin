@@ -11,7 +11,7 @@
 
   if (!datetimeEl) return;
 
-  let lastUpdatedAt = null;
+  let lastPriceSig = null;
   let pollInFlight = false;
 
   const formatPrice = (value) => Number(value).toFixed(3).replace(".", ",");
@@ -97,11 +97,13 @@
       if (!res.ok) return;
       const data = await res.json();
       if (!data) return;
-      if (data.updatedAt && data.updatedAt === lastUpdatedAt) return;
+      const sig = PRICE_KEYS.map((key) => String(data[key] ?? "")).join("|")
+        + "|" + String(data.updatedAt ?? "");
+      if (sig === lastPriceSig) return;
       for (const key of PRICE_KEYS) {
         if (data[key] != null) applyDisplayPrice(key, data[key]);
       }
-      if (data.updatedAt) lastUpdatedAt = data.updatedAt;
+      lastPriceSig = sig;
     } catch (err) {
       console.error(err);
     } finally {
