@@ -86,12 +86,12 @@ body.admin-page {
   color: #ffffff;
   text-align: center;
   text-transform: uppercase;
-  font-size: 30px;
+  font-size: 34px;
   font-weight: 800;
   line-height: 1;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.02em;
   white-space: nowrap;
-  -webkit-text-stroke: 0.6px #ffffff;
+  -webkit-text-stroke: 0.8px #ffffff;
   paint-order: stroke fill;
   text-shadow: 0 0 1px #ffffff;
 }
@@ -132,8 +132,10 @@ body.admin-page {
 
 .card[data-key="superPlus"] .type {
   font-size: 28px;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: 0;
+  -webkit-text-stroke: 0.6px var(--accent);
+  paint-order: stroke fill;
 }
 
 .price {
