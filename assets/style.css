@@ -219,7 +219,7 @@ body.admin-page {
   height: var(--footer-h);
   min-height: var(--footer-h);
   max-height: var(--footer-h);
-  overflow: visible;
+  overflow: hidden;
   padding: 0;
   margin: 0;
   z-index: 2;
@@ -230,13 +230,14 @@ body.admin-page {
   max-width: 100%;
   text-align: center;
   color: #ffffff;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 800;
   letter-spacing: 0.02em;
   line-height: 1;
   white-space: nowrap;
   overflow: hidden;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  -webkit-text-stroke: 0.4px #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
 }
 
 .admin-toolbar {
