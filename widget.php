@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 require __DIR__ . '/includes/auth.php';
+require __DIR__ . '/includes/fuels.php';
 
 if (!isLoggedIn()) {
     header('Location: index.php');
@@ -9,31 +10,15 @@ if (!isLoggedIn()) {
 }
 
 $prices = readPrices();
-
-$fuels = [
-    ['key' => 'diesel', 'label' => 'Diesel'],
-    ['key' => 'e10', 'label' => 'Super E10'],
-    ['key' => 'e5', 'label' => 'Super E5'],
-    ['key' => 'superPlus', 'label' => 'Super Plus'],
-    ['key' => 'adBlue', 'label' => 'AdBlue'],
-];
-
-function formatPriceParts(float $value): array
-{
-    $raw = number_format($value, 3, ',', '');
-    return [
-        'full' => $raw,
-        'main' => substr($raw, 0, -1),
-        'sup' => substr($raw, -1),
-    ];
-}
+$fuels = fuelDefinitions();
 ?>
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kraftstoffpreise</title>
+  <title>Kraftstoffpreise Admin</title>
+  <meta http-equiv="Cache-Control" content="no-store" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet" />
@@ -79,6 +64,7 @@ function formatPriceParts(float $value): array
       <a class="logout-link" href="logout.php">Abmelden</a>
     </div>
     <button type="button" class="fetch-btn" id="fetchBtn">Aktuelle Preise laden</button>
+    <p class="admin-hint">LED Anzeige: <a href="display.php">display.php</a></p>
     <p class="save-msg" id="saveMsg" hidden></p>
   </aside>
 

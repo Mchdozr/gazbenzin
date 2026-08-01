@@ -6,7 +6,7 @@
   const saveMsg = document.getElementById("saveMsg");
   const fetchBtn = document.getElementById("fetchBtn");
 
-  if (!datetimeEl || !saveBtn) return;
+  if (!datetimeEl) return;
 
   const formatPrice = (value) => Number(value).toFixed(3).replace(".", ",");
 
@@ -61,6 +61,7 @@
   };
 
   const showMsg = (text, ok) => {
+    if (!saveMsg) return;
     saveMsg.hidden = false;
     saveMsg.textContent = text;
     saveMsg.classList.toggle("is-ok", ok);
@@ -79,26 +80,28 @@
     syncPriceView(input);
   });
 
-  saveBtn.addEventListener("click", async () => {
-    saveBtn.disabled = true;
-    try {
-      const body = {};
-      for (const key of PRICE_KEYS) body[key] = readInput(key);
-      const res = await fetch("api/save.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-      const data = await res.json();
-      if (!res.ok || !data.ok) throw new Error(data.error || "Fehler");
-      showMsg("Gespeichert", true);
-    } catch (err) {
-      showMsg("Speichern fehlgeschlagen", false);
-      console.error(err);
-    } finally {
-      saveBtn.disabled = false;
-    }
-  });
+  if (saveBtn) {
+    saveBtn.addEventListener("click", async () => {
+      saveBtn.disabled = true;
+      try {
+        const body = {};
+        for (const key of PRICE_KEYS) body[key] = readInput(key);
+        const res = await fetch("api/save.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        });
+        const data = await res.json();
+        if (!res.ok || !data.ok) throw new Error(data.error || "Fehler");
+        showMsg("Gespeichert", true);
+      } catch (err) {
+        showMsg("Speichern fehlgeschlagen", false);
+        console.error(err);
+      } finally {
+        saveBtn.disabled = false;
+      }
+    });
+  }
 
   if (fetchBtn) {
     fetchBtn.addEventListener("click", async () => {

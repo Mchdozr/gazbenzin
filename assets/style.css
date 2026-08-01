@@ -159,6 +159,15 @@ body.admin-page {
   color: var(--text);
 }
 
+.value-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
 .price-main {
   display: inline-block;
 }
@@ -274,6 +283,18 @@ body.admin-page {
   font-size: 13px;
   font-weight: 700;
   text-decoration: none;
+}
+
+.admin-hint {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.admin-hint a {
+  color: #ffffff;
+  font-weight: 800;
 }
 
 .save-msg {
