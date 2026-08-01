@@ -234,35 +234,23 @@ body.admin-page {
   border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.admin-actions {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-}
-
 .save-btn {
   border: none;
-  border-radius: 999px;
+  border-radius: 14px;
   background: #ffffff;
   color: var(--bg);
   font: inherit;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 800;
-  padding: 8px 18px;
+  padding: 14px 16px;
   cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  width: 100%;
 }
 
 .save-btn:disabled {
   opacity: 0.6;
   cursor: wait;
-}
-
-.logout-link {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 13px;
-  font-weight: 700;
-  text-decoration: none;
 }
 
 .save-msg {

@@ -6,8 +6,6 @@ require __DIR__ . '/../includes/auth.php';
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
 
-requireLogin();
-
 if ($_SERVER['REQUEST_METHOD'] !== 'GET' && $_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     echo json_encode(['error' => 'Method not allowed']);

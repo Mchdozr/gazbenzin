@@ -4,7 +4,7 @@ declare(strict_types=1);
 /** @var array $prices */
 /** @var array $fuels */
 
-$assetV = '20260801b';
+$assetV = '20260801c';
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -50,10 +50,7 @@ $assetV = '20260801b';
   </div>
 
   <aside class="admin-toolbar" aria-label="Admin">
-    <div class="admin-actions">
-      <button type="button" class="save-btn" id="saveBtn">Speichern</button>
-      <a class="logout-link" href="logout.php">Abmelden</a>
-    </div>
+    <button type="button" class="save-btn" id="saveBtn">Speichern</button>
     <button type="button" class="fetch-btn" id="fetchBtn">Aktuelle Preise laden</button>
     <p class="save-msg" id="saveMsg" hidden></p>
   </aside>
