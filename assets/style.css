@@ -57,11 +57,11 @@ body.admin-page {
   width: 416px;
   height: 624px;
   max-height: 624px;
-  padding: 8px 16px var(--safe-bottom);
+  padding: 6px 14px var(--safe-bottom);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: var(--gap);
+  gap: 0;
   background: var(--bg);
   overflow: hidden;
 }
@@ -85,10 +85,13 @@ body.admin-page {
   width: 100%;
   color: #ffffff;
   text-transform: uppercase;
-  font-size: 36px;
+  font-size: 38px;
   font-weight: 800;
   line-height: 1;
   white-space: nowrap;
+  -webkit-text-stroke: 1px #ffffff;
+  paint-order: stroke fill;
+  text-shadow: 0 0 1px #ffffff, 0 1px 0 #ffffff;
 }
 
 .brand-name > span {
@@ -103,15 +106,20 @@ body.admin-page {
 .card {
   flex: 1 1 0;
   min-height: 0;
+  margin-bottom: var(--gap);
   background: var(--card);
   border-radius: var(--radius);
   padding: 0 var(--pad-x);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+  gap: 8px;
+  box-shadow: none;
   overflow: hidden;
+}
+
+.card:last-of-type {
+  margin-bottom: var(--gap);
 }
 
 .type {
