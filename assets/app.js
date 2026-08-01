@@ -172,7 +172,7 @@
   const fitTypeLabels = () => {
     document.querySelectorAll(".card .type").forEach((el) => {
       const key = el.closest(".card")?.dataset.key;
-      const maxPx = key === "superPlus" ? 24 : 34;
+      const maxPx = key === "superPlus" ? 22 : 34;
       el.style.fontSize = `${maxPx}px`;
       let size = maxPx;
       while (el.scrollWidth > el.clientWidth && size > 14) {

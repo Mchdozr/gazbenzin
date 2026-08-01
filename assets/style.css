@@ -80,18 +80,18 @@ body.admin-page {
 
 .brand-name {
   display: block;
-  width: auto;
+  width: fit-content;
   max-width: 100%;
   margin: 0 auto;
   color: #ffffff;
   text-align: center;
   text-transform: uppercase;
-  font-size: 34px;
+  font-size: 30px;
   font-weight: 800;
   line-height: 1;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.02em;
   white-space: nowrap;
-  -webkit-text-stroke: 0.8px #ffffff;
+  -webkit-text-stroke: 0.6px #ffffff;
   paint-order: stroke fill;
   text-shadow: 0 0 1px #ffffff;
 }
@@ -103,10 +103,10 @@ body.admin-page {
   background: var(--card);
   border-radius: var(--radius);
   padding: 0 var(--pad-x);
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 168px;
   align-items: center;
-  justify-content: space-between;
-  gap: 8px;
+  column-gap: 8px;
   box-shadow: none;
   overflow: hidden;
 }
@@ -131,9 +131,9 @@ body.admin-page {
 }
 
 .card[data-key="superPlus"] .type {
-  font-size: 24px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0;
 }
 
 .price {
@@ -143,20 +143,26 @@ body.admin-page {
   gap: 2px;
   font-weight: 800;
   line-height: 1;
-  flex: 0 0 168px;
   width: 168px;
   min-width: 168px;
+  max-width: 168px;
+  justify-self: start;
   position: relative;
   text-align: left;
+  direction: ltr;
+  font-variant-numeric: tabular-nums;
 }
 
 .price-view {
   display: inline-flex;
   align-items: flex-start;
+  justify-content: flex-start;
   font-size: 58px;
   font-weight: 800;
   letter-spacing: -0.04em;
   color: var(--text);
+  direction: ltr;
+  font-variant-numeric: tabular-nums;
 }
 
 .value-text {
