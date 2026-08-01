@@ -45,35 +45,49 @@ function pricesFile(): string
     return __DIR__ . '/../api/data.json';
 }
 
-function readPrices(): array
+function defaultPrices(): array
 {
-    $file = pricesFile();
-    if (is_file($file)) {
-        $data = json_decode((string) file_get_contents($file), true);
-        if (is_array($data) && isset($data['e5'], $data['e10'], $data['diesel'])) {
-            return [
-                'e5' => (float) $data['e5'],
-                'e10' => (float) $data['e10'],
-                'diesel' => (float) $data['diesel'],
-                'updatedAt' => $data['updatedAt'] ?? null,
-            ];
-        }
-    }
-
     return [
-        'e5' => 2.209,
-        'e10' => 2.151,
-        'diesel' => 2.203,
+        'diesel' => 2.399,
+        'e10' => 2.299,
+        'e5' => 2.359,
+        'superPlus' => 2.669,
+        'adBlue' => 1.999,
         'updatedAt' => null,
     ];
 }
 
-function savePrices(float $e5, float $e10, float $diesel): array
+function readPrices(): array
+{
+    $defaults = defaultPrices();
+    $file = pricesFile();
+    if (!is_file($file)) {
+        return $defaults;
+    }
+
+    $data = json_decode((string) file_get_contents($file), true);
+    if (!is_array($data)) {
+        return $defaults;
+    }
+
+    return [
+        'diesel' => isset($data['diesel']) ? (float) $data['diesel'] : $defaults['diesel'],
+        'e10' => isset($data['e10']) ? (float) $data['e10'] : $defaults['e10'],
+        'e5' => isset($data['e5']) ? (float) $data['e5'] : $defaults['e5'],
+        'superPlus' => isset($data['superPlus']) ? (float) $data['superPlus'] : $defaults['superPlus'],
+        'adBlue' => isset($data['adBlue']) ? (float) $data['adBlue'] : $defaults['adBlue'],
+        'updatedAt' => $data['updatedAt'] ?? null,
+    ];
+}
+
+function savePrices(float $diesel, float $e10, float $e5, float $superPlus, float $adBlue): array
 {
     $payload = [
-        'e5' => round($e5, 3),
-        'e10' => round($e10, 3),
         'diesel' => round($diesel, 3),
+        'e10' => round($e10, 3),
+        'e5' => round($e5, 3),
+        'superPlus' => round($superPlus, 3),
+        'adBlue' => round($adBlue, 3),
         'updatedAt' => date('c'),
         'country' => 'DE',
     ];

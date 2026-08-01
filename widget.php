@@ -9,6 +9,24 @@ if (!isLoggedIn()) {
 }
 
 $prices = readPrices();
+
+$fuels = [
+    ['key' => 'diesel', 'label' => 'Diesel'],
+    ['key' => 'e10', 'label' => 'Super E10'],
+    ['key' => 'e5', 'label' => 'Super E5'],
+    ['key' => 'superPlus', 'label' => 'Super Plus'],
+    ['key' => 'adBlue', 'label' => 'AdBlue'],
+];
+
+function formatPriceParts(float $value): array
+{
+    $raw = number_format($value, 3, ',', '');
+    return [
+        'full' => $raw,
+        'main' => substr($raw, 0, -1),
+        'sup' => substr($raw, -1),
+    ];
+}
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -29,37 +47,25 @@ $prices = readPrices();
           <span style="--i:0">L</span><span style="--i:1">T</span><span style="--i:2">C</span>
         </span>
         <span class="brand-line brand-line--sub">
-          <span style="--i:3">T</span><span style="--i:4">a</span><span style="--i:5">n</span><span style="--i:6">k</span><span style="--i:7">s</span><span style="--i:8">t</span><span style="--i:9">e</span><span style="--i:10">l</span><span style="--i:11">l</span><span style="--i:12">e</span>
-        </span> 
+          <span style="--i:3">T</span><span style="--i:4">A</span><span style="--i:5">N</span><span style="--i:6">K</span><span style="--i:7">S</span><span style="--i:8">T</span><span style="--i:9">E</span><span style="--i:10">L</span><span style="--i:11">L</span><span style="--i:12">E</span>
+        </span>
       </p>
     </header>
-    <article class="card" data-key="e5">
-      <p class="type">Super E5</p>
-      <span class="rule" aria-hidden="true"></span>
+    <?php foreach ($fuels as $fuel):
+      $parts = formatPriceParts((float) $prices[$fuel['key']]);
+    ?>
+    <article class="card" data-key="<?= htmlspecialchars($fuel['key'], ENT_QUOTES, 'UTF-8') ?>">
+      <p class="type"><?= htmlspecialchars($fuel['label'], ENT_QUOTES, 'UTF-8') ?></p>
       <p class="price">
-        <input class="value-input" name="e5" type="text" inputmode="decimal"
-               value="<?= htmlspecialchars(number_format($prices['e5'], 3, ',', ''), ENT_QUOTES, 'UTF-8') ?>" />
+        <span class="price-view" aria-hidden="true">
+          <span class="price-main"><?= htmlspecialchars($parts['main'], ENT_QUOTES, 'UTF-8') ?></span><span class="price-sup"><?= htmlspecialchars($parts['sup'], ENT_QUOTES, 'UTF-8') ?></span>
+        </span>
+        <input class="value-input" name="<?= htmlspecialchars($fuel['key'], ENT_QUOTES, 'UTF-8') ?>" type="text" inputmode="decimal"
+               value="<?= htmlspecialchars($parts['full'], ENT_QUOTES, 'UTF-8') ?>" />
         <span class="currency">€</span>
       </p>
     </article>
-    <article class="card" data-key="e10">
-      <p class="type">Super E10</p>
-      <span class="rule" aria-hidden="true"></span>
-      <p class="price">
-        <input class="value-input" name="e10" type="text" inputmode="decimal"
-               value="<?= htmlspecialchars(number_format($prices['e10'], 3, ',', ''), ENT_QUOTES, 'UTF-8') ?>" />
-        <span class="currency">€</span>
-      </p>
-    </article>
-    <article class="card" data-key="diesel">
-      <p class="type">Diesel</p>
-      <span class="rule" aria-hidden="true"></span>
-      <p class="price">
-        <input class="value-input" name="diesel" type="text" inputmode="decimal"
-               value="<?= htmlspecialchars(number_format($prices['diesel'], 3, ',', ''), ENT_QUOTES, 'UTF-8') ?>" />
-        <span class="currency">€</span>
-      </p>
-    </article>
+    <?php endforeach; ?>
     <div class="footer-bar">
       <p class="datetime" id="datetime">--.--.----          --:--:--</p>
     </div>

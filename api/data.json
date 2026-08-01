@@ -1,7 +1,9 @@
 {
-  "e5": 2.209,
-  "e10": 2.151,
-  "diesel": 2.203,
-  "updatedAt": null,
-  "country": "DE"
+    "diesel": 2.399,
+    "e10": 2.299,
+    "e5": 2.359,
+    "superPlus": 2.669,
+    "adBlue": 1.999,
+    "updatedAt": null,
+    "country": "DE"
 }

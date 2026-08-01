@@ -9,9 +9,11 @@ header('Cache-Control: no-store');
 $prices = readPrices();
 
 echo json_encode([
-    'e5' => $prices['e5'],
-    'e10' => $prices['e10'],
     'diesel' => $prices['diesel'],
+    'e10' => $prices['e10'],
+    'e5' => $prices['e5'],
+    'superPlus' => $prices['superPlus'],
+    'adBlue' => $prices['adBlue'],
     'updatedAt' => $prices['updatedAt'],
     'source' => 'manual',
     'country' => 'DE',

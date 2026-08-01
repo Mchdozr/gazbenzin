@@ -43,11 +43,15 @@ if (!is_array($data) || !isset($data['super'], $data['e10'], $data['diesel'])) {
     exit;
 }
 
+$current = readPrices();
+
 echo json_encode([
     'ok' => true,
-    'e5' => (float) $data['super'],
-    'e10' => (float) $data['e10'],
     'diesel' => (float) $data['diesel'],
+    'e10' => (float) $data['e10'],
+    'e5' => (float) $data['super'],
+    'superPlus' => $current['superPlus'],
+    'adBlue' => $current['adBlue'],
     'sourceDate' => $data['date'] ?? null,
     'source' => 'benzinpreis-aktuell',
     'country' => 'DE',

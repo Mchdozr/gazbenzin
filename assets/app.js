@@ -1,5 +1,6 @@
 (() => {
   const berlin = { timeZone: "Europe/Berlin" };
+  const PRICE_KEYS = ["diesel", "e10", "e5", "superPlus", "adBlue"];
   const datetimeEl = document.getElementById("datetime");
   const saveBtn = document.getElementById("saveBtn");
   const saveMsg = document.getElementById("saveMsg");
@@ -8,6 +9,15 @@
   if (!datetimeEl || !saveBtn) return;
 
   const formatPrice = (value) => Number(value).toFixed(3).replace(".", ",");
+
+  const splitPrice = (formatted) => {
+    const raw = String(formatted);
+    return {
+      full: raw,
+      main: raw.slice(0, -1),
+      sup: raw.slice(-1),
+    };
+  };
 
   const tickClock = () => {
     const parts = new Intl.DateTimeFormat("de-DE", {
@@ -27,9 +37,22 @@
     datetimeEl.textContent = `${date}          ${time}`;
   };
 
+  const syncPriceView = (input) => {
+    const card = input.closest(".card");
+    if (!card) return;
+    const mainEl = card.querySelector(".price-main");
+    const supEl = card.querySelector(".price-sup");
+    if (!mainEl || !supEl) return;
+    const parts = splitPrice(input.value.trim() || "0,000");
+    mainEl.textContent = parts.main;
+    supEl.textContent = parts.sup;
+  };
+
   const setInput = (name, value) => {
     const el = document.querySelector(`.value-input[name="${name}"]`);
-    if (el) el.value = formatPrice(value);
+    if (!el) return;
+    el.value = formatPrice(value);
+    syncPriceView(el);
   };
 
   const readInput = (name) => {
@@ -47,17 +70,24 @@
     }, 2500);
   };
 
+  document.querySelectorAll(".card").forEach((card) => {
+    const input = card.querySelector(".value-input");
+    if (!input) return;
+    card.querySelector(".price")?.addEventListener("click", () => input.focus());
+    input.addEventListener("input", () => syncPriceView(input));
+    input.addEventListener("blur", () => syncPriceView(input));
+    syncPriceView(input);
+  });
+
   saveBtn.addEventListener("click", async () => {
     saveBtn.disabled = true;
     try {
+      const body = {};
+      for (const key of PRICE_KEYS) body[key] = readInput(key);
       const res = await fetch("api/save.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          e5: readInput("e5"),
-          e10: readInput("e10"),
-          diesel: readInput("diesel"),
-        }),
+        body: JSON.stringify(body),
       });
       const data = await res.json();
       if (!res.ok || !data.ok) throw new Error(data.error || "Fehler");
@@ -77,9 +107,9 @@
         const res = await fetch("api/fetch.php", { cache: "no-store" });
         const data = await res.json();
         if (!res.ok || !data.ok) throw new Error(data.error || "Fehler");
-        setInput("e5", data.e5);
-        setInput("e10", data.e10);
-        setInput("diesel", data.diesel);
+        for (const key of PRICE_KEYS) {
+          if (data[key] != null) setInput(key, data[key]);
+        }
         showMsg("Aktuelle Preise geladen", true);
       } catch (err) {
         showMsg("Abruf fehlgeschlagen", false);

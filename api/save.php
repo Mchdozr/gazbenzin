@@ -40,22 +40,26 @@ $parse = static function ($value): ?float {
     return $n;
 };
 
-$e5 = $parse($data['e5'] ?? null);
-$e10 = $parse($data['e10'] ?? null);
 $diesel = $parse($data['diesel'] ?? null);
+$e10 = $parse($data['e10'] ?? null);
+$e5 = $parse($data['e5'] ?? null);
+$superPlus = $parse($data['superPlus'] ?? null);
+$adBlue = $parse($data['adBlue'] ?? null);
 
-if ($e5 === null || $e10 === null || $diesel === null) {
+if ($diesel === null || $e10 === null || $e5 === null || $superPlus === null || $adBlue === null) {
     http_response_code(400);
     echo json_encode(['error' => 'Ungültige Preise']);
     exit;
 }
 
-$payload = savePrices($e5, $e10, $diesel);
+$payload = savePrices($diesel, $e10, $e5, $superPlus, $adBlue);
 
 echo json_encode([
     'ok' => true,
-    'e5' => $payload['e5'],
-    'e10' => $payload['e10'],
     'diesel' => $payload['diesel'],
+    'e10' => $payload['e10'],
+    'e5' => $payload['e5'],
+    'superPlus' => $payload['superPlus'],
+    'adBlue' => $payload['adBlue'],
     'updatedAt' => $payload['updatedAt'],
 ], JSON_UNESCAPED_UNICODE);
