@@ -4,7 +4,7 @@ declare(strict_types=1);
 /** @var array $prices */
 /** @var array $fuels */
 
-$assetV = '20260801w';
+$assetV = '20260801x';
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -16,7 +16,7 @@ $assetV = '20260801w';
   <meta http-equiv="Pragma" content="no-cache" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/style.css?v=<?= htmlspecialchars($assetV, ENT_QUOTES, 'UTF-8') ?>" />
 </head>
 <body class="admin-page">
