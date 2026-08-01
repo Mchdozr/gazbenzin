@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 /** @var array $prices */
 /** @var array $fuels */
+
+$assetV = '20260801b';
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -10,17 +12,18 @@ declare(strict_types=1);
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kraftstoffpreise Admin</title>
-  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/style.css" />
+  <link rel="stylesheet" href="assets/style.css?v=<?= htmlspecialchars($assetV, ENT_QUOTES, 'UTF-8') ?>" />
 </head>
 <body class="admin-page">
   <div class="led-panel" aria-label="LED Anzeige 416x624">
     <main class="widget" aria-live="polite">
       <header class="brand-bar">
-        <p class="brand-name brand-static" aria-label="LTC Tankstelle">
+        <p class="brand-name" aria-label="LTC Tankstelle">
           <span class="brand-line brand-line--ltc">LTC</span>
           <span class="brand-line brand-line--sub">TANKSTELLE</span>
         </p>
@@ -41,7 +44,7 @@ declare(strict_types=1);
       </article>
       <?php endforeach; ?>
       <div class="footer-bar">
-        <p class="datetime" id="datetime">--.--.----          --:--:--</p>
+        <p class="datetime" id="datetime">--.--.---- --:--:--</p>
       </div>
     </main>
   </div>
@@ -52,10 +55,9 @@ declare(strict_types=1);
       <a class="logout-link" href="logout.php">Abmelden</a>
     </div>
     <button type="button" class="fetch-btn" id="fetchBtn">Aktuelle Preise laden</button>
-    <p class="admin-hint">LED: <a href="display.php">display.php</a> · Admin: <a href="admin.php">admin.php</a></p>
     <p class="save-msg" id="saveMsg" hidden></p>
   </aside>
 
-  <script src="assets/app.js"></script>
+  <script src="assets/app.js?v=<?= htmlspecialchars($assetV, ENT_QUOTES, 'UTF-8') ?>"></script>
 </body>
 </html>

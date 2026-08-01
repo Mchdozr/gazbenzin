@@ -34,7 +34,7 @@
     const get = (type) => parts.find((p) => p.type === type)?.value ?? "";
     const date = `${get("day")}.${get("month")}.${get("year")}`;
     const time = `${get("hour")}:${get("minute")}:${get("second")}`;
-    datetimeEl.textContent = `${date}          ${time}`;
+    datetimeEl.textContent = `${date} ${time}`;
   };
 
   const syncPriceView = (input) => {

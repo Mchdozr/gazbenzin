@@ -6,6 +6,7 @@ require __DIR__ . '/includes/fuels.php';
 
 $prices = readPrices();
 $fuels = fuelDefinitions();
+$assetV = '20260801b';
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -13,15 +14,16 @@ $fuels = fuelDefinitions();
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=416, height=624, initial-scale=1" />
   <title>Kraftstoffpreise</title>
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/style.css" />
+  <link rel="stylesheet" href="assets/style.css?v=<?= htmlspecialchars($assetV, ENT_QUOTES, 'UTF-8') ?>" />
 </head>
 <body>
   <main class="widget" aria-live="polite">
     <header class="brand-bar">
-      <p class="brand-name brand-static" aria-label="LTC Tankstelle">
+      <p class="brand-name" aria-label="LTC Tankstelle">
         <span class="brand-line brand-line--ltc">LTC</span>
         <span class="brand-line brand-line--sub">TANKSTELLE</span>
       </p>
@@ -41,9 +43,9 @@ $fuels = fuelDefinitions();
     </article>
     <?php endforeach; ?>
     <div class="footer-bar">
-      <p class="datetime" id="datetime">--.--.----          --:--:--</p>
+      <p class="datetime" id="datetime">--.--.---- --:--:--</p>
     </div>
   </main>
-  <script src="assets/app.js"></script>
+  <script src="assets/app.js?v=<?= htmlspecialchars($assetV, ENT_QUOTES, 'UTF-8') ?>"></script>
 </body>
 </html>
