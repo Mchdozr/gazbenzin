@@ -6,7 +6,7 @@ require __DIR__ . '/includes/fuels.php';
 
 $prices = readPrices();
 $fuels = fuelDefinitions();
-$assetV = '20260801c';
+$assetV = '20260801d';
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -23,10 +23,7 @@ $assetV = '20260801c';
 <body>
   <main class="widget" aria-live="polite">
     <header class="brand-bar">
-      <p class="brand-name" aria-label="LTC Tankstelle">
-        <span class="brand-line brand-line--ltc">LTC</span>
-        <span class="brand-line brand-line--sub">TANKSTELLE</span>
-      </p>
+      <p class="brand-name" aria-label="LTC Tankstelle">LTC TANKSTELLE</p>
     </header>
     <?php foreach ($fuels as $fuel):
       $parts = formatPriceParts((float) $prices[$fuel['key']]);
