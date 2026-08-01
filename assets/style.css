@@ -114,10 +114,10 @@ body.admin-page {
 
 .type {
   color: var(--accent);
-  font-size: 28px;
+  font-size: 34px;
   font-weight: 800;
-  line-height: 1;
-  letter-spacing: 0;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
   flex: 1 1 auto;
   min-width: 0;
@@ -137,9 +137,9 @@ body.admin-page {
 .price-view {
   display: inline-flex;
   align-items: flex-start;
-  font-size: 48px;
+  font-size: 58px;
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
   color: var(--text);
 }
 
@@ -177,9 +177,9 @@ body.admin-page {
   outline: none;
   background: transparent;
   font: inherit;
-  font-size: 48px;
+  font-size: 58px;
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
   color: var(--text);
   padding: 0;
   border-bottom: 2px solid transparent;
@@ -198,11 +198,11 @@ body.admin-page {
 }
 
 .price .currency {
-  font-size: 30px;
+  font-size: 36px;
   font-weight: 800;
   flex-shrink: 0;
   line-height: 1;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 .footer-bar {
