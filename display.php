@@ -6,7 +6,7 @@ require __DIR__ . '/includes/fuels.php';
 
 $prices = readPrices();
 $fuels = fuelDefinitions();
-$assetV = '20260801f';
+$assetV = '20260801g';
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -20,7 +20,7 @@ $assetV = '20260801f';
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/style.css?v=<?= htmlspecialchars($assetV, ENT_QUOTES, 'UTF-8') ?>" />
 </head>
-<body>
+<body class="display-page" data-live-prices="1">
   <main class="widget" aria-live="polite">
     <header class="brand-bar">
       <p class="brand-name" aria-label="LTC Tankstelle"><?= brandLettersHtml() ?></p>

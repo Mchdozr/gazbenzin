@@ -1,12 +1,18 @@
 (() => {
   const berlin = { timeZone: "Europe/Berlin" };
   const PRICE_KEYS = ["diesel", "e10", "e5", "superPlus", "adBlue"];
+  const DISPLAY_POLL_MS = 1000;
   const datetimeEl = document.getElementById("datetime");
   const saveBtn = document.getElementById("saveBtn");
   const saveMsg = document.getElementById("saveMsg");
   const fetchBtn = document.getElementById("fetchBtn");
+  const isDisplay = document.body.classList.contains("display-page")
+    || document.body.dataset.livePrices === "1";
 
   if (!datetimeEl) return;
+
+  let lastUpdatedAt = null;
+  let pollInFlight = false;
 
   const formatPrice = (value) => Number(value).toFixed(3).replace(".", ",");
 
@@ -48,6 +54,18 @@
     supEl.textContent = parts.sup;
   };
 
+  const applyDisplayPrice = (key, value) => {
+    const card = document.querySelector(`.card[data-key="${key}"]`);
+    if (!card) return;
+    const parts = splitPrice(formatPrice(value));
+    const mainEl = card.querySelector(".price-main");
+    const supEl = card.querySelector(".price-sup");
+    const textEl = card.querySelector(".value-text");
+    if (mainEl) mainEl.textContent = parts.main;
+    if (supEl) supEl.textContent = parts.sup;
+    if (textEl) textEl.textContent = parts.full;
+  };
+
   const setInput = (name, value) => {
     const el = document.querySelector(`.value-input[name="${name}"]`);
     if (!el) return;
@@ -69,6 +87,26 @@
     setTimeout(() => {
       saveMsg.hidden = true;
     }, 2500);
+  };
+
+  const pollDisplayPrices = async () => {
+    if (!isDisplay || pollInFlight) return;
+    pollInFlight = true;
+    try {
+      const res = await fetch("api/prices.php", { cache: "no-store" });
+      if (!res.ok) return;
+      const data = await res.json();
+      if (!data) return;
+      if (data.updatedAt && data.updatedAt === lastUpdatedAt) return;
+      for (const key of PRICE_KEYS) {
+        if (data[key] != null) applyDisplayPrice(key, data[key]);
+      }
+      if (data.updatedAt) lastUpdatedAt = data.updatedAt;
+    } catch (err) {
+      console.error(err);
+    } finally {
+      pollInFlight = false;
+    }
   };
 
   document.querySelectorAll(".card").forEach((card) => {
@@ -125,4 +163,9 @@
 
   tickClock();
   setInterval(tickClock, 1000);
+
+  if (isDisplay) {
+    pollDisplayPrices();
+    setInterval(pollDisplayPrices, DISPLAY_POLL_MS);
+  }
 })();
