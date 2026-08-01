@@ -4,7 +4,7 @@ declare(strict_types=1);
 /** @var array $prices */
 /** @var array $fuels */
 
-$assetV = '20260801d';
+$assetV = '20260801e';
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -23,7 +23,7 @@ $assetV = '20260801d';
   <div class="led-panel" aria-label="LED Anzeige 416x624">
     <main class="widget" aria-live="polite">
       <header class="brand-bar">
-        <p class="brand-name" aria-label="LTC Tankstelle">LTC TANKSTELLE</p>
+        <p class="brand-name" aria-label="LTC Tankstelle"><?= brandLettersHtml() ?></p>
       </header>
       <?php foreach ($fuels as $fuel):
         $parts = formatPriceParts((float) $prices[$fuel['key']]);

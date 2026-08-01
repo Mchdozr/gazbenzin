@@ -21,3 +21,17 @@ function formatPriceParts(float $value): array
         'sup' => substr($raw, -1),
     ];
 }
+
+function brandLettersHtml(string $text = 'LTC TANKSTELLE'): string
+{
+    $html = '';
+    $chars = preg_split('//u', $text, -1, PREG_SPLIT_NO_EMPTY) ?: [];
+    foreach ($chars as $char) {
+        if ($char === ' ') {
+            $html .= '<span class="brand-space" aria-hidden="true"></span>';
+            continue;
+        }
+        $html .= '<span>' . htmlspecialchars($char, ENT_QUOTES, 'UTF-8') . '</span>';
+    }
+    return $html;
+}

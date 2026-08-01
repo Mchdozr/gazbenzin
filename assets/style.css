@@ -67,21 +67,30 @@ body.admin-page {
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: 56px;
+  min-height: 52px;
   padding: 2px 0 4px;
 }
 
 .brand-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   color: #ffffff;
-  text-align: center;
   text-transform: uppercase;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 800;
   line-height: 1;
-  letter-spacing: 0.14em;
   white-space: nowrap;
-  overflow: hidden;
+}
+
+.brand-name > span {
+  flex: 0 0 auto;
+}
+
+.brand-name .brand-space {
+  flex: 0 0 0.55em;
+  width: 0.55em;
 }
 
 .card {
