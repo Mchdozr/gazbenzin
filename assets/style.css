@@ -114,10 +114,10 @@ body.admin-page {
 
 .type {
   color: var(--accent);
-  font-size: 22px;
+  font-size: 28px;
   font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: 0.01em;
+  line-height: 1;
+  letter-spacing: 0;
   text-transform: uppercase;
   flex: 1 1 auto;
   min-width: 0;
@@ -127,7 +127,7 @@ body.admin-page {
   display: flex;
   align-items: baseline;
   justify-content: flex-end;
-  gap: 3px;
+  gap: 2px;
   font-weight: 800;
   line-height: 1;
   flex: 0 0 auto;
@@ -137,19 +137,22 @@ body.admin-page {
 .price-view {
   display: inline-flex;
   align-items: flex-start;
-  font-size: 38px;
+  font-size: 48px;
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   color: var(--text);
 }
 
 .value-text {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
 
 .price-main {
@@ -158,25 +161,25 @@ body.admin-page {
 
 .price-sup {
   display: inline-block;
-  font-size: 0.45em;
+  font-size: 0.42em;
   font-weight: 800;
   line-height: 1;
   margin-left: 1px;
-  transform: translateY(1px);
+  transform: translateY(2px);
 }
 
 .value-input {
   position: absolute;
   inset: 0 auto 0 0;
-  width: 5.4ch;
+  width: 4.8ch;
   opacity: 0;
   border: none;
   outline: none;
   background: transparent;
   font: inherit;
-  font-size: 38px;
+  font-size: 48px;
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   color: var(--text);
   padding: 0;
   border-bottom: 2px solid transparent;
@@ -195,11 +198,11 @@ body.admin-page {
 }
 
 .price .currency {
-  font-size: 26px;
-  font-weight: 700;
+  font-size: 30px;
+  font-weight: 800;
   flex-shrink: 0;
   line-height: 1;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 .footer-bar {
