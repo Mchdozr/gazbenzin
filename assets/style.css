@@ -3,12 +3,12 @@
   --card: #ffffff;
   --accent: #e10600;
   --text: #111111;
-  --gap: 6px;
-  --radius: 16px;
-  --pad-x: 18px;
-  --footer-h: 40px;
-  --brand-h: 40px;
-  --safe-bottom: 18px;
+  --gap: 5px;
+  --radius: 14px;
+  --pad-x: 16px;
+  --footer-h: 38px;
+  --brand-h: 52px;
+  --safe-bottom: 16px;
 }
 
 * {
