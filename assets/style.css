@@ -3,10 +3,11 @@
   --card: #ffffff;
   --accent: #e10600;
   --text: #111111;
-  --gap: 9px;
-  --radius: 18px;
-  --pad-x: 20px;
-  --pad-y: 12px;
+  --gap: 7px;
+  --radius: 16px;
+  --pad-x: 18px;
+  --footer-h: 30px;
+  --brand-h: 44px;
 }
 
 * {
@@ -54,21 +55,25 @@ body.admin-page {
 .widget {
   width: 416px;
   height: 624px;
-  padding: 14px 18px 12px;
-  display: flex;
-  flex-direction: column;
+  max-height: 624px;
+  padding: 10px 16px 8px;
+  display: grid;
+  grid-template-rows: var(--brand-h) repeat(5, minmax(0, 1fr)) var(--footer-h);
   gap: var(--gap);
   background: var(--bg);
+  overflow: hidden;
 }
 
 .brand-bar {
-  flex: 0 0 auto;
+  grid-row: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: 52px;
-  padding: 2px 0 4px;
+  height: var(--brand-h);
+  min-height: var(--brand-h);
+  max-height: var(--brand-h);
+  overflow: hidden;
 }
 
 .brand-name {
@@ -78,7 +83,7 @@ body.admin-page {
   width: 100%;
   color: #ffffff;
   text-transform: uppercase;
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 800;
   line-height: 1;
   white-space: nowrap;
@@ -94,8 +99,8 @@ body.admin-page {
 }
 
 .card {
-  flex: 1 1 0;
   min-height: 0;
+  max-height: 100%;
   background: var(--card);
   border-radius: var(--radius);
   padding: 0 var(--pad-x);
@@ -104,11 +109,12 @@ body.admin-page {
   justify-content: space-between;
   gap: 10px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+  overflow: hidden;
 }
 
 .type {
   color: var(--accent);
-  font-size: 23px;
+  font-size: 22px;
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: 0.01em;
@@ -131,7 +137,7 @@ body.admin-page {
 .price-view {
   display: inline-flex;
   align-items: flex-start;
-  font-size: 42px;
+  font-size: 38px;
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--text);
@@ -168,7 +174,7 @@ body.admin-page {
   outline: none;
   background: transparent;
   font: inherit;
-  font-size: 42px;
+  font-size: 38px;
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--text);
@@ -197,22 +203,30 @@ body.admin-page {
 }
 
 .footer-bar {
-  flex: 0 0 auto;
+  grid-row: 7;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 4px;
-  min-height: 28px;
+  width: 100%;
+  height: var(--footer-h);
+  min-height: var(--footer-h);
+  max-height: var(--footer-h);
+  overflow: hidden;
+  padding: 0;
 }
 
 .datetime {
+  width: 100%;
+  max-width: 100%;
   text-align: center;
   color: #ffffff;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 700;
-  letter-spacing: 0.02em;
-  line-height: 1.2;
+  letter-spacing: 0.01em;
+  line-height: 1;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
 }
 
 .admin-toolbar {
