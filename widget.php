@@ -40,36 +40,38 @@ function formatPriceParts(float $value): array
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body class="admin-page">
-  <main class="widget" aria-live="polite">
-    <header class="brand-bar">
-      <p class="brand-name" aria-label="LTC Tankstelle">
-        <span class="brand-line brand-line--ltc">
-          <span style="--i:0">L</span><span style="--i:1">T</span><span style="--i:2">C</span>
-        </span>
-        <span class="brand-line brand-line--sub">
-          <span style="--i:3">T</span><span style="--i:4">A</span><span style="--i:5">N</span><span style="--i:6">K</span><span style="--i:7">S</span><span style="--i:8">T</span><span style="--i:9">E</span><span style="--i:10">L</span><span style="--i:11">L</span><span style="--i:12">E</span>
-        </span>
-      </p>
-    </header>
-    <?php foreach ($fuels as $fuel):
-      $parts = formatPriceParts((float) $prices[$fuel['key']]);
-    ?>
-    <article class="card" data-key="<?= htmlspecialchars($fuel['key'], ENT_QUOTES, 'UTF-8') ?>">
-      <p class="type"><?= htmlspecialchars($fuel['label'], ENT_QUOTES, 'UTF-8') ?></p>
-      <p class="price">
-        <span class="price-view" aria-hidden="true">
-          <span class="price-main"><?= htmlspecialchars($parts['main'], ENT_QUOTES, 'UTF-8') ?></span><span class="price-sup"><?= htmlspecialchars($parts['sup'], ENT_QUOTES, 'UTF-8') ?></span>
-        </span>
-        <input class="value-input" name="<?= htmlspecialchars($fuel['key'], ENT_QUOTES, 'UTF-8') ?>" type="text" inputmode="decimal"
-               value="<?= htmlspecialchars($parts['full'], ENT_QUOTES, 'UTF-8') ?>" />
-        <span class="currency">€</span>
-      </p>
-    </article>
-    <?php endforeach; ?>
-    <div class="footer-bar">
-      <p class="datetime" id="datetime">--.--.----          --:--:--</p>
-    </div>
-  </main>
+  <div class="led-panel" aria-label="LED Anzeige 416x624">
+    <main class="widget" aria-live="polite">
+      <header class="brand-bar">
+        <p class="brand-name" aria-label="LTC Tankstelle">
+          <span class="brand-line brand-line--ltc">
+            <span style="--i:0">L</span><span style="--i:1">T</span><span style="--i:2">C</span>
+          </span>
+          <span class="brand-line brand-line--sub">
+            <span style="--i:3">T</span><span style="--i:4">A</span><span style="--i:5">N</span><span style="--i:6">K</span><span style="--i:7">S</span><span style="--i:8">T</span><span style="--i:9">E</span><span style="--i:10">L</span><span style="--i:11">L</span><span style="--i:12">E</span>
+          </span>
+        </p>
+      </header>
+      <?php foreach ($fuels as $fuel):
+        $parts = formatPriceParts((float) $prices[$fuel['key']]);
+      ?>
+      <article class="card" data-key="<?= htmlspecialchars($fuel['key'], ENT_QUOTES, 'UTF-8') ?>">
+        <p class="type"><?= htmlspecialchars($fuel['label'], ENT_QUOTES, 'UTF-8') ?></p>
+        <p class="price">
+          <span class="price-view" aria-hidden="true">
+            <span class="price-main"><?= htmlspecialchars($parts['main'], ENT_QUOTES, 'UTF-8') ?></span><span class="price-sup"><?= htmlspecialchars($parts['sup'], ENT_QUOTES, 'UTF-8') ?></span>
+          </span>
+          <input class="value-input" name="<?= htmlspecialchars($fuel['key'], ENT_QUOTES, 'UTF-8') ?>" type="text" inputmode="decimal"
+                 value="<?= htmlspecialchars($parts['full'], ENT_QUOTES, 'UTF-8') ?>" />
+          <span class="currency">€</span>
+        </p>
+      </article>
+      <?php endforeach; ?>
+      <div class="footer-bar">
+        <p class="datetime" id="datetime">--.--.----          --:--:--</p>
+      </div>
+    </main>
+  </div>
 
   <aside class="admin-toolbar" aria-label="Admin">
     <div class="admin-actions">
