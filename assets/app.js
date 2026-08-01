@@ -1,7 +1,7 @@
 (() => {
   const berlin = { timeZone: "Europe/Berlin" };
   const PRICE_KEYS = ["diesel", "e10", "e5", "superPlus", "adBlue"];
-  const DISPLAY_POLL_MS = 1000;
+  const DISPLAY_POLL_MS = 1000; // LED refresh target
   const datetimeEl = document.getElementById("datetime");
   const saveBtn = document.getElementById("saveBtn");
   const saveMsg = document.getElementById("saveMsg");
@@ -93,7 +93,13 @@
     if (!isDisplay || pollInFlight) return;
     pollInFlight = true;
     try {
-      const res = await fetch("api/prices.php", { cache: "no-store" });
+      const res = await fetch(`api/prices.php?_=${Date.now()}`, {
+        cache: "no-store",
+        headers: {
+          "Cache-Control": "no-cache",
+          Pragma: "no-cache",
+        },
+      });
       if (!res.ok) return;
       const data = await res.json();
       if (!data) return;

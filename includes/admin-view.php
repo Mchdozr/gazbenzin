@@ -4,7 +4,7 @@ declare(strict_types=1);
 /** @var array $prices */
 /** @var array $fuels */
 
-$assetV = '20260801g';
+$assetV = '20260801h';
 ?>
 <!DOCTYPE html>
 <html lang="de">

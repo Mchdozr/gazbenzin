@@ -4,7 +4,7 @@ declare(strict_types=1);
 require __DIR__ . '/../includes/auth.php';
 
 header('Content-Type: application/json; charset=utf-8');
-header('Cache-Control: no-store');
+sendNoCacheHeaders();
 
 $prices = readPrices();
 
@@ -15,6 +15,7 @@ echo json_encode([
     'superPlus' => $prices['superPlus'],
     'adBlue' => $prices['adBlue'],
     'updatedAt' => $prices['updatedAt'],
+    'serverTime' => date('c'),
     'source' => 'manual',
     'country' => 'DE',
 ], JSON_UNESCAPED_UNICODE);

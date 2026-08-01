@@ -6,7 +6,8 @@ require __DIR__ . '/includes/fuels.php';
 
 $prices = readPrices();
 $fuels = fuelDefinitions();
-$assetV = '20260801g';
+$assetV = '20260801h';
+sendNoCacheHeaders();
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -14,7 +15,8 @@ $assetV = '20260801g';
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=416, height=624, initial-scale=1" />
   <title>Kraftstoffpreise</title>
-  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
+  <meta http-equiv="Pragma" content="no-cache" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet" />

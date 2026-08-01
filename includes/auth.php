@@ -45,6 +45,17 @@ function pricesFile(): string
     return __DIR__ . '/../api/data.json';
 }
 
+function sendNoCacheHeaders(): void
+{
+    header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+    header('Pragma: no-cache');
+    header('Expires: 0');
+    header('Surrogate-Control: no-store');
+    header('CDN-Cache-Control: no-store');
+    header('Cloudflare-CDN-Cache-Control: no-store');
+    header('X-Accel-Expires: 0');
+}
+
 function defaultPrices(): array
 {
     return [
@@ -61,6 +72,7 @@ function readPrices(): array
 {
     $defaults = defaultPrices();
     $file = pricesFile();
+    clearstatcache(true, $file);
     if (!is_file($file)) {
         return $defaults;
     }
