@@ -125,6 +125,9 @@ body.admin-page {
   text-transform: uppercase;
   flex: 1 1 auto;
   min-width: 0;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .price {

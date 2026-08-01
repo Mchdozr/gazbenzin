@@ -169,8 +169,22 @@
     });
   }
 
+  const fitTypeLabels = () => {
+    const maxPx = 34;
+    document.querySelectorAll(".card .type").forEach((el) => {
+      el.style.fontSize = `${maxPx}px`;
+      let size = maxPx;
+      while (el.scrollWidth > el.clientWidth && size > 16) {
+        size -= 1;
+        el.style.fontSize = `${size}px`;
+      }
+    });
+  };
+
   tickClock();
   setInterval(tickClock, 1000);
+  fitTypeLabels();
+  window.addEventListener("resize", fitTypeLabels);
 
   if (isDisplay) {
     pollDisplayPrices();
