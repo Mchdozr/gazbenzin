@@ -6,7 +6,7 @@ require __DIR__ . '/includes/auth.php';
 $error = '';
 
 if (isLoggedIn()) {
-    header('Location: widget.php');
+    header('Location: admin.php');
     exit;
 }
 
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = trim((string) ($_POST['username'] ?? ''));
     $pass = (string) ($_POST['password'] ?? '');
     if (attemptLogin($user, $pass)) {
-        header('Location: widget.php');
+        header('Location: admin.php');
         exit;
     }
     $error = 'Benutzername oder Passwort falsch.';

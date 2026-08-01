@@ -86,7 +86,27 @@ body.admin-page {
   white-space: nowrap;
 }
 
-.brand-line span {
+.brand-line--ltc {
+  font-size: 44px;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: 0.06em;
+}
+
+.brand-line--sub {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.22em;
+}
+
+.brand-static .brand-line {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+.brand-name:not(.brand-static) .brand-line span {
   display: inline-block;
   opacity: 0;
   transform: translateX(-14px);
@@ -94,14 +114,14 @@ body.admin-page {
   animation-delay: calc(var(--i) * 0.09s);
 }
 
-.brand-line--ltc span {
+.brand-name:not(.brand-static) .brand-line--ltc span {
   font-size: 44px;
   font-weight: 800;
   line-height: 0.95;
   letter-spacing: 0.06em;
 }
 
-.brand-line--sub span {
+.brand-name:not(.brand-static) .brand-line--sub span {
   font-size: 18px;
   font-weight: 700;
   line-height: 1;

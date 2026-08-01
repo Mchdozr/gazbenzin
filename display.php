@@ -21,13 +21,9 @@ $fuels = fuelDefinitions();
 <body>
   <main class="widget" aria-live="polite">
     <header class="brand-bar">
-      <p class="brand-name" aria-label="LTC Tankstelle">
-        <span class="brand-line brand-line--ltc">
-          <span style="--i:0">L</span><span style="--i:1">T</span><span style="--i:2">C</span>
-        </span>
-        <span class="brand-line brand-line--sub">
-          <span style="--i:3">T</span><span style="--i:4">A</span><span style="--i:5">N</span><span style="--i:6">K</span><span style="--i:7">S</span><span style="--i:8">T</span><span style="--i:9">E</span><span style="--i:10">L</span><span style="--i:11">L</span><span style="--i:12">E</span>
-        </span>
+      <p class="brand-name brand-static" aria-label="LTC Tankstelle">
+        <span class="brand-line brand-line--ltc">LTC</span>
+        <span class="brand-line brand-line--sub">TANKSTELLE</span>
       </p>
     </header>
     <?php foreach ($fuels as $fuel):
