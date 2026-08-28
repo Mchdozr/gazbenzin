@@ -1,0 +1,11 @@
+{
+  "name": "gazbenzin",
+  "install": "sudo apt-get update && sudo apt-get install -y php-cli php-curl php-mbstring",
+  "terminals": [
+    {
+      "name": "php-server",
+      "command": "php -S 0.0.0.0:8080 -t ."
+    }
+  ],
+  "ports": [8080]
+}
