@@ -1,5 +1,5 @@
 :root {
-  --bg: #2a050a;
+  --bg: #4a0c16;
   --card: #ffffff;
   --accent: #e10600;
   --text: #111111;
@@ -42,7 +42,7 @@ body.admin-page {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background: #1a0306;
+  background: #3a0911;
 }
 
 .led-panel {
@@ -267,7 +267,7 @@ body.admin-page {
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  background: #1a0306;
+  background: #3a0911;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
