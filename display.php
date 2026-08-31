@@ -6,7 +6,7 @@ require __DIR__ . '/includes/fuels.php';
 
 $prices = readPrices();
 $fuels = fuelDefinitions();
-$assetV = '20260831b';
+$assetV = '20260831c';
 sendNoCacheHeaders();
 ?>
 <!DOCTYPE html>
